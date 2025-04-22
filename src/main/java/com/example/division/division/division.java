@@ -13,14 +13,11 @@ public class division {
 
     @GetMapping("/{a}/{b}")
     public ResponseEntity<?> resta(@PathVariable int a, @PathVariable int b) {
-        if(a < b) {
+         if (b == 0) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
-                    .body("Error 400: 'a' no puede ser menor que 'b'");
-        } else if (a == b) {
-            return ResponseEntity
-                    .status(HttpStatus.BAD_REQUEST)
-                    .body("Error 400: 'a' no puede ser igual a 'b'");
+                    .body("Error 400: 'b' no puede ser igual a '0'");
+
         } else {
             int resultado = a / b;
             return ResponseEntity.ok(resultado);
